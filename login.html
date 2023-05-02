@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MeShop</title>
+    <title>Login</title>
     <link rel="stylesheet" href="./styles.css">
 </head>
-
 <body>
-
+    
 
     <div class="navbar">
         <div>
@@ -24,28 +22,23 @@
             <span><a href="./profile/myprofile.html">My Profile</a></span>
         </div>
     </div>
+  
+  
+    <div class="form-cont">
+        <h1>Login</h1>
+  
+        <form action="./profile.html">
 
-
-
-
-    <div class="container">
-        <h1 class="title">MeShop</h1>
-        <p>My First Shop built on HTML, CSS AND JavaScript</p>
-        <div class="sec-cont">
-            <div class="btn-grp">
-                <button type="button" id="login-btn">Login</button>
-                <button type="button" id="sign-up">Signup</button>
-            </div>
-
-            <img src="./landingPagePic.png" alt="">
-        </div>
-
-    
+            <input type="email" name="" id="email-inp" placeholder="Email">
+            <input type="password" name="" id="pass-inp" placeholder="Password">
+            <span id="err-msg"></span>
+            <button type="submit" id="log-in">Login</button>
+        </form>
+  
     </div>
 
 
-
+    <script src="./login.js"></script>
 
 </body>
-
 </html>
