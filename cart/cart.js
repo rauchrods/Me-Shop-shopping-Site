@@ -65,7 +65,45 @@ function removefromcartfunc(event) {
         }
     }
 
-   printData(cartproducts)
+    printData(cartproducts)
+    printcheckoutlist(cartproducts);
 
     localStorage.setItem("cartproducts", JSON.stringify(cartproducts));
 }
+
+let checkoutlistcont = document.querySelector(".checkoutlist");
+
+function printcheckoutlist(cartproducts) {
+
+    let str = `
+     <h2>Checkout List</h2>
+    `
+    let i = 1;
+    let total = 0;
+    for (let product of cartproducts) {
+        str += `
+       <div class="row-ele">
+       <span>${i}.${product.title}</span>
+       <span>$${product.price}</span>
+       </div>
+       `
+        i++;
+        total += product.price;
+    }
+    total = Math.round(total * 100) / 100;
+    str += `
+    <div class="row-ele total">
+    <span>Total</span>
+    <span>$${total}</span>
+    </div>
+    <div class="checkout-btn-cont">
+    <button class="checkout-btn"> Click To Checkout</button>
+    </div>
+    `
+
+    checkoutlistcont.innerHTML = str;
+
+}
+
+
+printcheckoutlist(cartproducts);
