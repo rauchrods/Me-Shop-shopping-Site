@@ -13,11 +13,23 @@ body{
    align-items: center;
    padding: 15px 20px;
    height: 30px;
+   border-bottom: 1px solid white;
    /* flex-wrap: wrap; */
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   z-index: 1;
+
 }
 /* .navbar>div{
     border: 1px solid white;
 } */
+
+.navbar>div:nth-child(1){
+    font-size: 1.6rem;
+    font-weight: 100;
+}
 .navbar>div:nth-child(2){
     display: flex;
     justify-content: space-between;
