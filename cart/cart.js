@@ -127,26 +127,35 @@ function giveprice(cartproducts){
   return total;
 }
 
-document.querySelector(".checkout-btn").onclick =  function (e) {
-  var options = {
-    key: "rzp_test_xkt3a0VeLgXWhH", // Enter the Key ID generated from the Dashboard
-    amount: giveprice(cartproducts)*100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-    currency: "INR",
-    name: "MeShop Checkout",
-    description: "This is your order", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-    theme: {
-      color: "#000",
-    },
-    image:
-      "https://www.mintformations.co.uk/blog/wp-content/uploads/2020/05/shutterstock_583717939.jpg",
-  };
+document.querySelector(".checkout-btn").addEventListener ( "click", function (e) {
+  // var options = {
+  //   key: "rzp_test_xkt3a0VeLgXWhH", // Enter the Key ID generated from the Dashboard
+  //   amount: giveprice(cartproducts)*100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+  //   currency: "INR",
+  //   name: "MeShop Checkout",
+  //   description: "This is your order", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+  //   theme: {
+  //     color: "#000",
+  //   },
+  //   image:
+  //     "https://www.mintformations.co.uk/blog/wp-content/uploads/2020/05/shutterstock_583717939.jpg",
+  // };
 
-  var rzpy1 = new Razorpay(options);
-  rzpy1.open();
-  // clear mycart - localStorage
+  // var rzpy1 = new Razorpay(options);
+  //  rzpy1.open();
+  // // clear mycart - localStorage
+  // localStorage.removeItem('cartproducts');
+  
 
-  e.preventDefault();
 
-  localStorage.removeItem('cartproducts');
+  // e.preventDefault();
 
-};
+  // window.location.href  ="../razorpay/razorpay.html";
+ 
+  window.open("../razorpay/razorpay.html", "_blank");
+  printData(cartproducts);
+  location.reload();
+  
+    
+
+});

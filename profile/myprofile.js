@@ -27,6 +27,10 @@ if(!localStorage.getItem("currentuser")){
   lnameinp.value = currentuser.lastname;
 
 
+  let profileheader = document.querySelector(".pro-hdr");
+
+  profileheader.innerHTML =`My Profile (${currentuser.firstname} ${currentuser.lastname})`;
+
 
   saveinfobtn.addEventListener("click", ()=>{
     
