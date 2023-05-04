@@ -1,4 +1,9 @@
-
+if(!localStorage.getItem("currentuser")){
+    alert("you need to login or signup first to see the cart")
+    setTimeout(()=>{
+      window.location.href  ="../index.html";
+     },1000);
+}
 
 let cardproductscont = document.querySelector(".products");
 
@@ -65,7 +70,7 @@ function removefromcartfunc(event) {
         }
     }
 
-    printData(cartproducts)
+    printData(cartproducts);
     printcheckoutlist(cartproducts);
 
     localStorage.setItem("cartproducts", JSON.stringify(cartproducts));
@@ -93,8 +98,12 @@ function printcheckoutlist(cartproducts) {
     total = Math.round(total * 100) / 100;
     str += `
     <div class="row-ele total">
-    <span>Total</span>
+    <span>Total(USD)</span>
     <span>$${total}</span>
+    </div>
+    <div class="row-ele total">
+    <span>Total(INR)</span>
+    <span>₹${Math.round(total*82)}</span>
     </div>
     <div class="checkout-btn-cont">
     <button class="checkout-btn"> Click To Checkout</button>
@@ -107,3 +116,37 @@ function printcheckoutlist(cartproducts) {
 
 
 printcheckoutlist(cartproducts);
+
+function giveprice(cartproducts){
+  let total = 0;
+  for (let product of cartproducts) {
+      total += product.price;
+  }
+  total=total*82;
+  total = Math.round(total * 100) / 100;
+  return total;
+}
+
+document.querySelector(".checkout-btn").onclick =  function (e) {
+  var options = {
+    key: "rzp_test_xkt3a0VeLgXWhH", // Enter the Key ID generated from the Dashboard
+    amount: giveprice(cartproducts)*100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    currency: "INR",
+    name: "MeShop Checkout",
+    description: "This is your order", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    theme: {
+      color: "#000",
+    },
+    image:
+      "https://www.mintformations.co.uk/blog/wp-content/uploads/2020/05/shutterstock_583717939.jpg",
+  };
+
+  var rzpy1 = new Razorpay(options);
+  rzpy1.open();
+  // clear mycart - localStorage
+
+  e.preventDefault();
+
+  localStorage.removeItem('cartproducts');
+
+};

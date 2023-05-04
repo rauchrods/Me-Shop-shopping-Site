@@ -42,7 +42,7 @@ if(!localStorage.getItem("currentuser")){
             firstname:  fnameinp.value,
             lastname:  lnameinp.value,
              email: usersarr[i].email,
-             password: usersarr[i].password
+             password: usersarr[i].password,
           }
 
           usersarr.splice(i, 1, currentuser);
@@ -50,8 +50,12 @@ if(!localStorage.getItem("currentuser")){
         }
      }
 
-
+     errmsg1.innerText  = "Details sucessfully updated";
+     errmsg1.style.color = "#7ECD71";
+     errmsg1.style.display = "inline-block";
        localStorage.setItem("users", JSON.stringify(usersarr));
+
+       currentuser.token  = generatetoken();
        localStorage.setItem("currentuser", JSON.stringify(currentuser));
 
   });
@@ -118,7 +122,22 @@ if(!localStorage.getItem("currentuser")){
 
   logoutbtn.addEventListener("click", ()=>{
     localStorage.removeItem("currentuser");
+    localStorage.removeItem("cartproducts");
+      
+    alert("Redirecting you to index page...");
+    setTimeout(()=>{
+     window.location.href  ="../index.html";
+    },1000);
+     
   });
 
 
 
+  function generatetoken(){
+    let str = "";
+    for(let i=0; i<16; i++){
+        str +=   String.fromCharCode  (Math.floor(Math.random() * 89) + 33); //33 to 122
+    }
+  
+    return str;
+  }

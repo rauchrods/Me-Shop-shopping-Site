@@ -62,14 +62,14 @@
             }
           }
 
-
+        
         usersarr.push(user);
         localStorage.setItem("users", JSON.stringify(usersarr));
 
 
      }
   
-    
+      user.token = generatetoken();
      localStorage.setItem("currentuser", JSON.stringify(user));
     
      errmsg.innerText  = "Successfully Signed Up!";
@@ -77,20 +77,20 @@
      errmsg.style.display = "inline-block";
    
   
-    //  setTimeout(()=>{
-    //   window.location.href  ="./login.html";
-    //  },1000);
+     setTimeout(()=>{
+      window.location.href  ="./shop/shop.html";
+     },1000);
   
         
   
   });
   
   
-//   function generatetoken(){
-//     let str = "";
-//     for(let i=0; i<16; i++){
-//         str +=   String.fromCharCode  (Math.floor(Math.random() * 89) + 33); //33 to 122
-//     }
+  function generatetoken(){
+    let str = "";
+    for(let i=0; i<16; i++){
+        str +=   String.fromCharCode  (Math.floor(Math.random() * 89) + 33); //33 to 122
+    }
   
-//     return str;
-//   }
+    return str;
+  }

@@ -43,15 +43,16 @@ body{
 
 .form-cont{
     /* border: 1px solid white; */
+   
     display: flex;
     flex-direction: column;
     justify-content: center;
     row-gap: 20px;
     align-items: flex-start;
     width: 70%;
-    height: calc(95vh - 30px);
-    margin:  auto;
-    overflow: auto;
+    height: 100%;
+    margin: 60px auto;
+    /* overflow: auto; */
 }
 
 .form-cont>h1{
