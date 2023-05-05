@@ -127,6 +127,7 @@ if(!localStorage.getItem("currentuser")){
   logoutbtn.addEventListener("click", ()=>{
     localStorage.removeItem("currentuser");
     localStorage.removeItem("cartproducts");
+    localStorage.removeItem("products");
       
     alert("Redirecting you to index page...");
     setTimeout(()=>{

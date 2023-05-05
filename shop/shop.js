@@ -7,7 +7,7 @@ if(!localStorage.getItem("currentuser")){
 
 
 
-let products = [];
+let products =  JSON.parse(localStorage.getItem("products")) || [];
 let cartproducts =  JSON.parse (localStorage.getItem("cartproducts") ) || [];
 
 let prodcont = document.querySelector(".product-container");
@@ -16,16 +16,20 @@ let filters = document.querySelectorAll(".filter");
 let searchbar = document.querySelector("#search-bar");
 console.log(filters);
 
-fetch('https://fakestoreapi.com/products/')
+if(!localStorage.getItem("products")){
+    fetch('https://fakestoreapi.com/products/')
     .then((res) => {
         return res.json();
     })
     .then((json) => {
         products = json;
         products = modifyproducts(products);
-        console.log(products);
+        localStorage.setItem("products", JSON.stringify(products));
+        console.log(products);   
         printData(products);
     })
+}
+
 
 
 
@@ -68,6 +72,7 @@ function printData(products) {
     prodcont.innerHTML = str;
 }
 
+printData(products);
 
 function ratingstars(rating) {
 
